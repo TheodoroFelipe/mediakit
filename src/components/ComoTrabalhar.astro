@@ -10,6 +10,7 @@ interface Props {
   intro?: string;
   formatos?: Formato[];
   entregas?: string[];
+  consulta?: string;
 }
 
 const {
@@ -17,6 +18,7 @@ const {
   intro = t.parceria.intro,
   formatos = mk.parceria.formatos,
   entregas = mk.parceria.entregas,
+  consulta = t.parceria.consulta,
 } = Astro.props;
 
 const lista = formatos.filter((f) => ok(f.nome));
@@ -48,6 +50,16 @@ const pontuar = (texto: string) => (/[.!?]$/.test(texto) ? texto : `${texto}.`);
           <li class="rounded-full border border-chip bg-white px-[18px] py-2 font-medium">{e}</li>
         ))}
       </ul>
+    )}
+    {ok(consulta) && (
+      <p class="m-0 text-[17px] text-muted">
+        {consulta}{' '}
+        {ok(t.parceria.ctaConsulta) && (
+          <a href="#contato" class="font-semibold text-link underline-offset-4 hover:text-navy hover:underline">
+            {t.parceria.ctaConsulta}
+          </a>
+        )}
+      </p>
     )}
   </Container>
 </section>

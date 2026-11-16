@@ -372,21 +372,21 @@
   "parceria": {
     "formatos": [
       {
-        "nome": "Produto do mês",
-        "descricao": "A marca envia um produto por mês e ele entra na rotina e no conteúdo"
+        "nome": "Apoio com material",
+        "descricao": "A marca fornece material de treino, como óculos de natação, prancha, sungas, nadadeiras ou suplementos. Ele entra na rotina e aparece nos treinos, nas competições e nas redes"
       },
       {
-        "nome": "Cupom exclusivo",
-        "descricao": "Código de desconto com retorno mensurável"
+        "nome": "Patrocínio por competição",
+        "descricao": "A marca cobre os custos de uma competição (inscrição, viagem e hospedagem) e aparece na preparação, na prova e no resultado"
       },
       {
-        "nome": "Ativação por competição",
-        "descricao": "Ação com prazo definido em torno de um campeonato"
+        "nome": "Patrocínio da temporada 2027",
+        "descricao": "Apoio para o ano inteiro: as cinco etapas do Circuito Master PR/SC e o Estadual, com a marca presente em todas as competições e no conteúdo da temporada"
       }
     ],
     "entregas": [
       "Posts e Reels com marcação da marca",
-      "Stories de uso do produto",
+      "Stories com a marca na rotina",
       "Collab no perfil da marca",
       "Relatório de desempenho ao fim do período"
     ]
@@ -562,7 +562,9 @@
     },
     "parceria": {
       "titulo": "Como trabalhar comigo",
-      "intro": "Três formatos de parceria, do mais simples ao mais completo. Todos terminam com relatório de desempenho."
+      "intro": "Três formas de apoiar: com material de treino ou com patrocínio em dinheiro, de uma competição à temporada inteira. Todas terminam com relatório de desempenho.",
+      "consulta": "Valores sob consulta, de acordo com o pacote e o período.",
+      "ctaConsulta": "Fale comigo"
     },
     "objetivo": {
       "titulo": "Próximos 12 meses",
