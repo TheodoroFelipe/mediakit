@@ -330,6 +330,32 @@
       "citaApoio": "A conferir",
       "print": "\"portal da cidade noticia.jpg\": listagem do site mostra \"Publicado em 04/11/2026 às 12:00\". Link direto ainda indisponível.",
       "urlEncontrada": "https://foz.portaldacidade.com/noticias/esportes/nadador-de-foz-do-iguacu-conquista-quatro-medalhas-em-campeonato-brasileiro-master-0300"
+    },
+    {
+      "tipo": "radio",
+      "veiculo": "Rádio Clube 100.9 FM",
+      "titulo": "PENDENTE",
+      "data": "PENDENTE",
+      "descricao": "Entrevista.",
+      "url": "PENDENTE",
+      "imagem": {
+        "arquivo": "PENDENTE",
+        "alt": "PENDENTE"
+      },
+      "print": "Programa, data e link/áudio a enviar"
+    },
+    {
+      "tipo": "radio",
+      "veiculo": "Rádio 97.7 FM",
+      "titulo": "PENDENTE",
+      "data": "PENDENTE",
+      "descricao": "Entrevista.",
+      "url": "PENDENTE",
+      "imagem": {
+        "arquivo": "PENDENTE",
+        "alt": "PENDENTE"
+      },
+      "print": "Programa, data e link/áudio a enviar"
     }
   ],
   "conteudo": {
@@ -398,6 +424,7 @@
     ],
     "entregas": [
       "Posts e Reels com marcação da marca",
+      "Citação da marca nas entrevistas e nos releases para rádio e jornais de Foz e região",
       "Stories com a marca na rotina",
       "Collab no perfil da marca",
       "Relatório de desempenho ao fim do período"
