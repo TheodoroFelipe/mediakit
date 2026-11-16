@@ -344,15 +344,27 @@
       },
       {
         "nome": "Reels de humor fitness",
-        "descricao": "Situações de treino e academia em tom leve"
+        "descricao": "Situações de treino e academia em tom leve",
+        "foto": {
+          "arquivo": "conteudo/reels-humor.jpg",
+          "alt": "Cena de um Reel de humor do perfil @fetheodoroguimaraes: piscina de treino com a frase \"Como curtir esse Carnaval?\""
+        }
       },
       {
         "nome": "Rotina de treino",
-        "descricao": "Piscina e academia, com dicas de quem compete"
+        "descricao": "Piscina e academia, com dicas de quem compete",
+        "foto": {
+          "arquivo": "rotina treino.jpg",
+          "alt": "Theodoro Guimaraes nadando costas no treino, com a água espirrando ao redor"
+        }
       },
       {
         "nome": "Conteúdo com marcas",
-        "descricao": "Produto integrado à rotina, com cupom rastreável"
+        "descricao": "Produto integrado à rotina, com cupom rastreável",
+        "foto": {
+          "arquivo": "conteudo com marca.png",
+          "alt": "Theodoro Guimaraes na piscina, de touca e óculos espelhados, apoiado na borda ao lado do bloco de partida"
+        }
       }
     ],
     "exemplos": []
@@ -451,8 +463,8 @@
       "alt": "Theodoro Guimaraes na braçada de peito, entre as raias de uma piscina descoberta"
     },
     "destaqueResultados": {
-      "arquivo": "ZZAH10018510311.jpg",
-      "alt": "Theodoro Guimaraes de touca colorida no meio da braçada de peito, com a água azul ao redor"
+      "arquivo": "brasileiro-medalhas.jpg",
+      "alt": "Theodoro Guimaraes com as medalhas do 76º Campeonato Brasileiro Master diante do painel da competição no Rio de Janeiro"
     }
   },
   "textos": {
