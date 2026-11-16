@@ -1,0 +1,20 @@
+---
+interface Props {
+  href: string;
+  variante?: 'primario' | 'contorno';
+  externo?: boolean;
+}
+const { href, variante = 'primario', externo = false } = Astro.props;
+---
+<a
+  href={href}
+  {...(externo ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+  class:list={[
+    'inline-block rounded-md text-[18px] font-semibold no-underline transition-colors',
+    variante === 'primario'
+      ? 'bg-aqua px-7 py-3.5 text-navy hover:bg-white hover:text-navy'
+      : 'border-2 border-white px-[26px] py-3 text-white hover:bg-white hover:text-navy',
+  ]}
+>
+  <slot />
+</a>

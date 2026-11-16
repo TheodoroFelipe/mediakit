@@ -1,0 +1,17 @@
+---
+interface Props {
+  claro?: boolean;
+  as?: 'p' | 'h3';
+  class?: string;
+}
+const { claro = false, as: Tag = 'p', class: classe = '' } = Astro.props;
+---
+<Tag
+  class:list={[
+    'm-0 font-condensed text-[17px] font-bold tracking-[0.14em] uppercase sm:text-[18px]',
+    claro ? 'text-aqua' : 'text-link',
+    classe,
+  ]}
+>
+  <slot />
+</Tag>

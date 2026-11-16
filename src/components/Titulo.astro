@@ -1,0 +1,18 @@
+---
+interface Props {
+  claro?: boolean;
+  id?: string;
+  class?: string;
+}
+const { claro = false, id, class: classe = '' } = Astro.props;
+---
+<h2
+  id={id}
+  class:list={[
+    'm-0 font-condensed text-[40px] leading-none font-extrabold uppercase sm:text-[48px]',
+    claro ? 'text-white' : 'text-navy',
+    classe,
+  ]}
+>
+  <slot />
+</h2>

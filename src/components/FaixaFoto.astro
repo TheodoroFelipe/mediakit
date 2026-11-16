@@ -1,0 +1,25 @@
+---
+import { mk, ok, t } from '../lib/dados';
+import { foto } from '../lib/fotos';
+import Foto from './Foto.astro';
+
+const imagem = foto(mk.fotos.faixa.arquivo);
+const frase = t.faixaFoto.frase;
+---
+{imagem && (
+  <section aria-label={mk.fotos.faixa.alt} class="relative flex min-h-[460px] items-end overflow-hidden bg-deep text-white sm:min-h-[600px]">
+    <Foto
+      src={imagem}
+      alt={mk.fotos.faixa.alt}
+      widths={[640, 1024, 1600, 2400]}
+      sizes="100vw"
+      class="absolute inset-0 h-full w-full object-cover object-[50%_35%]"
+    />
+    <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/35 to-transparent"></div>
+    {ok(frase) && (
+      <div class="relative mx-auto w-full max-w-[1120px] px-4 pb-12 sm:px-8 sm:pb-14">
+        <p class="m-0 max-w-[720px] font-condensed text-[40px] leading-[0.95] font-extrabold uppercase sm:text-[64px]">{frase}</p>
+      </div>
+    )}
+  </section>
+)}

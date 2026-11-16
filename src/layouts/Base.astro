@@ -1,0 +1,54 @@
+---
+import '../styles/global.css';
+import { t, url } from '../lib/dados';
+
+interface Props {
+  titulo?: string;
+  descricao?: string;
+  noindex?: boolean;
+}
+
+const { titulo = t.meta.titulo, descricao = t.meta.descricao, noindex = false } = Astro.props;
+
+const fontes: [string, number, string][] = [
+  ['Barlow', 400, 'barlow-latin-400-normal'],
+  ['Barlow', 500, 'barlow-latin-500-normal'],
+  ['Barlow', 600, 'barlow-latin-600-normal'],
+  ['Barlow Condensed', 600, 'barlow-condensed-latin-600-normal'],
+  ['Barlow Condensed', 700, 'barlow-condensed-latin-700-normal'],
+  ['Barlow Condensed', 800, 'barlow-condensed-latin-800-normal'],
+];
+
+const fontFace = fontes
+  .map(
+    ([familia, peso, arquivo]) =>
+      `@font-face{font-family:"${familia}";font-style:normal;font-weight:${peso};font-display:swap;src:url("${url(`fonts/${arquivo}.woff2`)}") format("woff2");}`,
+  )
+  .join('');
+
+const preload = ['barlow-condensed-latin-800-normal', 'barlow-latin-400-normal'];
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titulo}</title>
+    <meta name="description" content={descricao} />
+    <meta name="theme-color" content="#08213F" />
+    {noindex && <meta name="robots" content="noindex" />}
+    {preload.map((arquivo) => (
+      <link rel="preload" href={url(`fonts/${arquivo}.woff2`)} as="font" type="font/woff2" crossorigin />
+    ))}
+    <style is:inline set:html={fontFace}></style>
+  </head>
+  <body>
+    <a
+      href="#conteudo-principal"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-aqua focus:px-4 focus:py-2 focus:font-semibold focus:text-navy"
+    >
+      {t.pularConteudo}
+    </a>
+    <slot />
+  </body>
+</html>

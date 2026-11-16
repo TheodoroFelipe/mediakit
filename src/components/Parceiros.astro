@@ -1,0 +1,42 @@
+---
+import { mk, ok, t } from '../lib/dados';
+import Container from './Container.astro';
+import Sobretitulo from './Sobretitulo.astro';
+import Titulo from './Titulo.astro';
+
+const parceiros = mk.parceiros.filter((p) => ok(p.nome));
+const apoio = mk.apoio.filter((a) => ok(a));
+---
+{(parceiros.length > 0 || apoio.length > 0) && (
+  <section id="parceiros" aria-label={t.parceiros.titulo} class="bg-white">
+    <Container class="flex flex-col gap-12 py-16 sm:py-20 lg:flex-row">
+      {parceiros.length > 0 && (
+        <div class="flex min-w-0 flex-col gap-5 lg:flex-[1_1_420px]">
+          <Titulo>{t.parceiros.titulo}</Titulo>
+          {parceiros.map((p) => (
+            <div class="flex flex-col gap-2 rounded-lg border border-line p-7">
+              {ok(p.tipo) && <Sobretitulo>{p.tipo}</Sobretitulo>}
+              <h3 class="m-0 font-condensed text-[36px] leading-none font-extrabold uppercase">{p.nome}</h3>
+              {ok(p.descricao) && <p class="m-0 text-muted">{p.descricao}</p>}
+              {ok(p.cupom) && (
+                <p class="m-0 mt-2 font-semibold">
+                  {t.parceiros.cupom}: <span class="tracking-[0.04em]">{p.cupom}</span>
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+      {apoio.length > 0 && (
+        <div class="flex min-w-0 flex-col gap-5 lg:flex-[1_1_420px]">
+          <Titulo>{t.parceiros.apoio}</Titulo>
+          <ul class="m-0 flex list-none flex-col border-t border-line p-0">
+            {apoio.map((a) => (
+              <li class="border-b border-line py-[18px] font-semibold">{a}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </Container>
+  </section>
+)}

@@ -1,0 +1,101 @@
+---
+import { mk, ok, t } from '../lib/dados';
+import Container from './Container.astro';
+import Sobretitulo from './Sobretitulo.astro';
+import Titulo from './Titulo.astro';
+
+type Evento = { temporada?: string; evento: string; local: string; data: string };
+
+const calendario = (mk.calendario as Evento[]).filter((c) => ok(c.evento));
+
+// Agrupa por temporada, mantendo a ordem do JSON.
+const temporadas = [...new Set(calendario.map((c) => (ok(c.temporada) ? c.temporada : '')))];
+const grupos = temporadas.map((temporada) => ({
+  temporada,
+  eventos: calendario.filter((c) => (ok(c.temporada) ? c.temporada : '') === temporada),
+}));
+
+const mesCurto = (mes: number) =>
+  new Intl.DateTimeFormat('pt-BR', { month: 'short', timeZone: 'UTC' })
+    .format(new Date(Date.UTC(2000, mes - 1, 15)))
+    .replace('.', '');
+
+// "2026-11-28" → dia + mês; "2027-08" → só o mês; qualquer outra coisa → "a definir".
+function quando(data: string) {
+  if (/^\d{4}-\d{2}-\d{2}$/.test(data)) {
+    const [, m, d] = data.split('-').map(Number);
+    return { grande: String(d), pequeno: mesCurto(m), datetime: data };
+  }
+  if (/^\d{4}-\d{2}$/.test(data)) {
+    const [, m] = data.split('-').map(Number);
+    return { grande: mesCurto(m), pequeno: '', datetime: data };
+  }
+  return null;
+}
+
+// Etapa na cidade do atleta: oportunidade de ativação local para marcas.
+const cidadeAtleta = mk.atleta.cidade.split(',')[0].trim().toLowerCase();
+const emCasa = (c: Evento) => ok(c.local) && c.local.toLowerCase().startsWith(cidadeAtleta);
+---
+{(ok(mk.objetivo) || calendario.length > 0) && (
+  <section id="objetivo" aria-labelledby="objetivo-titulo" class="bg-white">
+    <Container class="flex flex-col gap-12 py-16 sm:py-20 lg:flex-row lg:items-start">
+      <div class="flex min-w-0 flex-col gap-5 lg:sticky lg:top-8 lg:flex-[1_1_480px]">
+        <Titulo id="objetivo-titulo">{t.objetivo.titulo}</Titulo>
+        {ok(mk.objetivo) && (
+          <p class="m-0 font-condensed text-[28px] leading-[1.2] font-bold text-deep sm:text-[34px]">{mk.objetivo}</p>
+        )}
+      </div>
+      {calendario.length > 0 && (
+        <div class="flex min-w-0 flex-col gap-6 lg:flex-[1_1_400px]">
+          <Sobretitulo as="h3">{t.objetivo.calendario}</Sobretitulo>
+          {grupos.map((g) => (
+            <div class="flex flex-col gap-3">
+              {ok(g.temporada) && grupos.length > 1 && (
+                <h4 class="m-0 border-b border-line pb-2 text-[17px] font-semibold text-navy">
+                  {t.objetivo.temporada} {g.temporada}
+                </h4>
+              )}
+              <ul class="m-0 flex list-none flex-col gap-3 p-0">
+                {g.eventos.map((c) => {
+                  const q = ok(c.data) ? quando(c.data) : null;
+                  const casa = emCasa(c);
+                  return (
+                    <li
+                      class:list={[
+                        'flex items-center gap-5 rounded-lg border p-5',
+                        casa ? 'border-pool bg-paper' : 'border-line',
+                      ]}
+                    >
+                      <div class="flex w-[76px] shrink-0 flex-col items-start justify-center">
+                        {q ? (
+                          <time datetime={q.datetime} class="flex flex-col font-condensed leading-none font-extrabold text-navy uppercase">
+                            <span class="text-[36px]">{q.grande}</span>
+                            {q.pequeno && <span class="text-[18px] tracking-[0.08em]">{q.pequeno}</span>}
+                          </time>
+                        ) : (
+                          <span class="font-condensed text-[15px] leading-[1.1] font-bold tracking-[0.08em] text-muted uppercase">
+                            {t.objetivo.dataADefinir}
+                          </span>
+                        )}
+                      </div>
+                      <div class="min-w-0">
+                        <p class="m-0 font-semibold">{c.evento}</p>
+                        {ok(c.local) && <p class="m-0 text-muted">{c.local}</p>}
+                        {casa && (
+                          <p class="m-0 mt-1.5 inline-block rounded-full bg-pool px-2.5 py-0.5 text-[13px] font-semibold tracking-[0.04em] text-white uppercase">
+                            {t.objetivo.emCasa}
+                          </p>
+                        )}
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ))}
+        </div>
+      )}
+    </Container>
+  </section>
+)}

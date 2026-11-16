@@ -1,0 +1,583 @@
+{
+  "atleta": {
+    "nome": "Theodoro Guimaraes",
+    "titulo": "Nadador master",
+    "equipe": "Acquamaster Foz",
+    "cidade": "Foz do Iguaçu, PR",
+    "categoria": "Master 30+ (M30-34)",
+    "provas": [
+      "50m peito",
+      "100m peito",
+      "200m peito",
+      "50m livre",
+      "100m livre",
+      "50m borboleta",
+      "100m medley",
+      "50m costas",
+      "100m costas"
+    ],
+    "rotina": "Piscina 3 a 4x e academia 4x por semana",
+    "posicionamento": "Medalhista no Campeonato Brasileiro Masters, atleta da Acquamaster Foz do Iguaçu.",
+    "bio": [
+      "Sou nadador master de Foz do Iguaçu e compito pelo município na equipe Acquamaster Foz, na categoria 30+. Comecei a nadar há cerca de cinco anos e compito há dois anos e meio, com os melhores resultados nas provas de peito.",
+      "Em 2026 estreei no Campeonato Brasileiro Masters, no Rio de Janeiro, e voltei com quatro medalhas. Nas redes sociais mostro a rotina de treino, os bastidores das competições e o dia a dia da vida de atleta. Quero levar o esporte para a vida das pessoas e dar visibilidade a quem apoia e valoriza o esporte."
+    ],
+    "fatos": [
+      "Natural de Foz do Iguaçu",
+      "Nada há cerca de 5 anos e compete há 2 anos e meio",
+      "Treina natação de 3 a 4 vezes por semana e faz academia 4 vezes por semana"
+    ]
+  },
+  "metricas": {
+    "atualizadoEm": "2026-11-16",
+    "instagram": {
+      "usuario": "@fetheodoroguimaraes",
+      "url": "https://www.instagram.com/fetheodoroguimaraes/",
+      "verificado": true,
+      "seguidores": 397,
+      "contasAlcancadas30d": 7873,
+      "visualizacoes30d": 38999,
+      "taxaEngajamento": "7,7%",
+      "taxaEngajamentoCalculo": "Interações em 30 dias (Stories 2,3 mil + Posts 632 + Reels 84 ≈ 3.016) ÷ visualizações (38.999). Período 17/10 a 15/11/2026.",
+      "publico": [
+        {
+          "valor": "77%",
+          "rotulo": "homens"
+        },
+        {
+          "valor": "74%",
+          "rotulo": "entre 25 e 44 anos"
+        },
+        {
+          "valor": "42%",
+          "rotulo": "em Foz do Iguaçu"
+        }
+      ]
+    },
+    "youtube": {
+      "usuario": "@fetheo26",
+      "url": "PENDENTE",
+      "nota": "PENDENTE",
+      "inscritos": "PENDENTE"
+    },
+    "tiktok": {
+      "usuario": "@fetheo26",
+      "url": "https://www.tiktok.com/@fetheo26",
+      "nota": "Conta nova, em crescimento",
+      "seguidores": 327,
+      "curtidas": "+4.000"
+    }
+  },
+  "destaques": [
+    {
+      "valor": "4",
+      "rotulo": "medalhas no 76º Brasileiro Masters"
+    },
+    {
+      "valor": "5º",
+      "rotulo": "lugar geral 30+ no Circuito Master PR/SC 2025"
+    },
+    {
+      "valor": "16",
+      "rotulo": "medalhas na temporada 2026"
+    }
+  ],
+  "resultados": [
+    {
+      "evento": "76º Campeonato Brasileiro Masters de Natação",
+      "local": "Rio de Janeiro, RJ",
+      "data": "2026-11-01",
+      "destaque": true,
+      "nota": "Primeira participação em um campeonato nacional; evento com 528 atletas de 72 equipes",
+      "provas": [
+        {
+          "prova": "50m peito",
+          "colocacao": "4º",
+          "medalha": true
+        },
+        {
+          "prova": "100m peito",
+          "colocacao": "4º",
+          "medalha": true
+        },
+        {
+          "prova": "100m livre",
+          "colocacao": "4º",
+          "medalha": true
+        },
+        {
+          "prova": "200m peito",
+          "colocacao": "6º",
+          "medalha": true
+        }
+      ]
+    },
+    {
+      "evento": "6º Campeonato Estadual PR/SC Masters de Natação — Troféu Vladimir Passos de Freitas",
+      "local": "Colombo, PR",
+      "data": "2026-08-16",
+      "provas": [
+        {
+          "prova": "100m peito",
+          "colocacao": "2º",
+          "medalha": true,
+          "tempo": "1:39.23"
+        },
+        {
+          "prova": "50m costas",
+          "colocacao": "3º",
+          "medalha": true,
+          "tempo": "54.94"
+        },
+        {
+          "prova": "100m costas",
+          "colocacao": "3º",
+          "medalha": true,
+          "tempo": "2:11.12"
+        },
+        {
+          "prova": "50m peito",
+          "colocacao": "4º",
+          "medalha": true,
+          "tempo": "43.56"
+        },
+        {
+          "prova": "Revezamento 4x50m livre (faixa 200+)",
+          "colocacao": "5º",
+          "medalha": true,
+          "tempo": "2:27.79"
+        }
+      ],
+      "fonte": "Resultados oficiais ABMN (PDF), Santa Mônica Clube de Campo, piscina de 50 m"
+    },
+    {
+      "evento": "3ª Etapa Maringá — Troféu Ricardo Suzuki",
+      "local": "Maringá, PR",
+      "data": "2026-06-20",
+      "provas": [
+        {
+          "prova": "50m peito",
+          "colocacao": "2º",
+          "medalha": true
+        },
+        {
+          "prova": "100m peito",
+          "colocacao": "2º",
+          "medalha": true
+        }
+      ]
+    },
+    {
+      "evento": "2ª Etapa Londrina — Troféu Família Bucharles",
+      "local": "Londrina, PR",
+      "data": "2026-05-16",
+      "provas": [
+        {
+          "prova": "50m peito",
+          "colocacao": "1º",
+          "medalha": true
+        },
+        {
+          "prova": "200m peito",
+          "colocacao": "2º",
+          "medalha": true
+        }
+      ]
+    },
+    {
+      "evento": "I Etapa Circuito 25m Master de Natação",
+      "local": "São Luís, MA",
+      "data": "2026-05-15",
+      "provas": [
+        {
+          "prova": "50m livre",
+          "colocacao": "1º",
+          "medalha": true
+        },
+        {
+          "prova": "25m peito",
+          "colocacao": "2º",
+          "medalha": true
+        }
+      ]
+    },
+    {
+      "evento": "1ª Etapa Curitiba",
+      "local": "Curitiba, PR",
+      "data": "2026-03-28",
+      "provas": [
+        {
+          "prova": "100m medley",
+          "colocacao": "3º",
+          "medalha": true,
+          "tempo": "1:43.57"
+        }
+      ]
+    },
+    {
+      "evento": "Circuito Master PR/SC",
+      "local": "Paraná e Santa Catarina",
+      "data": "temporada 2025",
+      "provas": [
+        {
+          "prova": "Classificação geral 30+ masculino",
+          "colocacao": "5º",
+          "trofeu": true
+        }
+      ]
+    }
+  ],
+  "naMidia": [
+    {
+      "tipo": "rede",
+      "veiculo": "100 Fronteiras",
+      "titulo": "PENDENTE",
+      "data": "novembro de 2026",
+      "descricao": "Carrossel de 8 imagens, com legenda em português e espanhol, no perfil verificado @100fronteiras.oficial (32 mil seguidores).",
+      "url": "https://www.instagram.com/p/Dffx-M-m1Ib/",
+      "imagem": {
+        "arquivo": "midia/100fronteiras-capa.jpg",
+        "alt": "Capa do carrossel do 100 Fronteiras: Theodoro Guimaraes com quatro medalhas no peito diante do painel do 76º Campeonato Brasileiro Master, com o título \"Estreou no Brasileiro e voltou com quatro medalhas\""
+      },
+      "citaApoio": "Sim: SMEL e Edital nº 02/2026",
+      "print": "Capa recortada de \"100fronteiras instagram.jpg\" (print enviado em 16/11/2026)",
+      "destaque": true
+    },
+    {
+      "tipo": "materia",
+      "veiculo": "Prefeitura de Foz do Iguaçu",
+      "titulo": "Nadador de Foz do Iguaçu conquista quatro medalhas em Campeonato Brasileiro Master",
+      "data": "2026-11-05",
+      "descricao": "Notícia oficial no site da Prefeitura.",
+      "url": "https://www.foz.pr.gov.br/nadador-de-foz-do-iguacu-conquista-quatro-medalhas-em-campeonato-brasileiro-master/",
+      "imagem": {
+        "arquivo": "PENDENTE",
+        "alt": "PENDENTE"
+      },
+      "citaApoio": "Sim: Edital de Chamamento Público nº 02/2026 – SMEL",
+      "print": "A fazer"
+    },
+    {
+      "tipo": "materia",
+      "veiculo": "Jornal Voz do Oeste",
+      "titulo": "Nadador de Foz do Iguaçu conquista quatro medalhas no Campeonato Brasileiro Master no Rio de Janeiro",
+      "autor": "Rinaldo L. dos Santos",
+      "data": "2026-11-05",
+      "descricao": "Resultado de cada prova e declarações do atleta.",
+      "url": "https://jornalvozdooeste.com.br/noticia/60075/nadador-de-foz-do-iguacu-conquista-quatro-medalhas-no-campeonato-brasileiro-master-no-rio-de-janeiro",
+      "imagem": {
+        "arquivo": "PENDENTE",
+        "alt": "PENDENTE"
+      },
+      "citaApoio": "Sim: SMEL e edital municipal (sem número)",
+      "print": "A fazer"
+    },
+    {
+      "tipo": "materia",
+      "veiculo": "Clickfoz",
+      "titulo": "Nadador de Foz conquista 4 medalhas em estreia no Campeonato Brasileiro Master",
+      "autor": "Amanda Zelinski",
+      "data": "2026-11-04",
+      "descricao": "PENDENTE",
+      "url": "https://clickfozdoiguacu.com.br/nadador-foz-do-iguacu-quatro-medalhas-brasileiro-master/",
+      "imagem": {
+        "arquivo": "PENDENTE",
+        "alt": "PENDENTE"
+      },
+      "citaApoio": "Sim: Secretaria de Esporte e edital municipal (sem número)",
+      "print": "A fazer"
+    },
+    {
+      "tipo": "materia",
+      "veiculo": "Portal Iguaçu",
+      "titulo": "Nadador de Foz do Iguaçu conquista quatro medalhas no Brasileiro Master",
+      "data": "2026-11-04",
+      "descricao": "PENDENTE",
+      "url": "https://portaliguacu.com.br/nadador-de-foz-do-iguacu-conquista-quatro-medalhas-no-brasileiro-master/",
+      "imagem": {
+        "arquivo": "PENDENTE",
+        "alt": "PENDENTE"
+      },
+      "citaApoio": "Sim: Secretaria Municipal de Esporte e edital municipal (sem número)",
+      "print": "A fazer",
+      "dataFonte": "Data da chamada na capa (04/11/2026); a página da matéria não mostra data."
+    },
+    {
+      "tipo": "materia",
+      "veiculo": "Almanaque Futuro",
+      "titulo": "Nadador de Foz do Iguaçu conquista quatro medalhas no Campeonato Brasileiro Master no Rio de Janeiro",
+      "data": "2026-11-04",
+      "descricao": "PENDENTE",
+      "url": "https://almanaquefuturo.com.br/esporte/nadador-de-foz-do-iguacu-conquista-quatro-medalhas-no-campeonato-brasileiro-master-no-rio-de-janeiro/",
+      "imagem": {
+        "arquivo": "PENDENTE",
+        "alt": "PENDENTE"
+      },
+      "citaApoio": "Sim: Secretaria Municipal de Esporte e edital municipal (sem número)",
+      "print": "A fazer"
+    },
+    {
+      "tipo": "materia",
+      "veiculo": "Portal da Cidade Foz",
+      "titulo": "Nadador de Foz do Iguaçu conquista quatro medalhas em Campeonato Brasileiro Master",
+      "data": "2026-11-04",
+      "descricao": "Editoria de Esportes.",
+      "url": "PENDENTE",
+      "imagem": {
+        "arquivo": "PENDENTE",
+        "alt": "PENDENTE"
+      },
+      "citaApoio": "A conferir",
+      "print": "\"portal da cidade noticia.jpg\": listagem do site mostra \"Publicado em 04/11/2026 às 12:00\". Link direto ainda indisponível.",
+      "urlEncontrada": "https://foz.portaldacidade.com/noticias/esportes/nadador-de-foz-do-iguacu-conquista-quatro-medalhas-em-campeonato-brasileiro-master-0300"
+    }
+  ],
+  "conteudo": {
+    "formatos": [
+      {
+        "nome": "Carrosséis de competição",
+        "descricao": "Resultados, pódios e bastidores de cada etapa",
+        "foto": {
+          "arquivo": "novo.png",
+          "alt": "Theodoro Guimaraes com a camiseta da Acquamaster Foz, segurando o troféu de 5º lugar na categoria 30+ masculino e uma medalha no peito"
+        }
+      },
+      {
+        "nome": "Reels de humor fitness",
+        "descricao": "Situações de treino e academia em tom leve"
+      },
+      {
+        "nome": "Rotina de treino",
+        "descricao": "Piscina e academia, com dicas de quem compete"
+      },
+      {
+        "nome": "Conteúdo com marcas",
+        "descricao": "Produto integrado à rotina, com cupom rastreável"
+      }
+    ],
+    "exemplos": []
+  },
+  "parceiros": [
+    {
+      "nome": "GymCore",
+      "tipo": "Parceria ativa",
+      "descricao": "Camisetas oversized",
+      "cupom": "FELIPETHEODOROG"
+    }
+  ],
+  "apoio": [
+    "Prefeitura de Foz do Iguaçu",
+    "Secretaria de Esporte, Lazer, Juventude e Melhor Idade"
+  ],
+  "parceria": {
+    "formatos": [
+      {
+        "nome": "Produto do mês",
+        "descricao": "A marca envia um produto por mês e ele entra na rotina e no conteúdo"
+      },
+      {
+        "nome": "Cupom exclusivo",
+        "descricao": "Código de desconto com retorno mensurável"
+      },
+      {
+        "nome": "Ativação por competição",
+        "descricao": "Ação com prazo definido em torno de um campeonato"
+      }
+    ],
+    "entregas": [
+      "Posts e Reels com marcação da marca",
+      "Stories de uso do produto",
+      "Collab no perfil da marca",
+      "Relatório de desempenho ao fim do período"
+    ]
+  },
+  "objetivo": "Conquistar índice técnico e seguir representando Foz do Iguaçu no circuito Master brasileiro e em competições internacionais.",
+  "calendario": [
+    {
+      "temporada": "2026",
+      "evento": "5ª Etapa Circuito Master PR/SC",
+      "local": "Toledo, PR",
+      "data": "2026-11-28"
+    },
+    {
+      "temporada": "2027",
+      "evento": "1ª Etapa Circuito Master PR/SC",
+      "local": "Curitiba, PR",
+      "data": "PENDENTE"
+    },
+    {
+      "temporada": "2027",
+      "evento": "2ª Etapa Circuito Master PR/SC",
+      "local": "Londrina, PR",
+      "data": "PENDENTE"
+    },
+    {
+      "temporada": "2027",
+      "evento": "3ª Etapa Circuito Master PR/SC",
+      "local": "Maringá, PR",
+      "data": "PENDENTE"
+    },
+    {
+      "temporada": "2027",
+      "evento": "Campeonato Estadual PR/SC Masters",
+      "local": "PENDENTE",
+      "data": "2027-08"
+    },
+    {
+      "temporada": "2027",
+      "evento": "4ª Etapa Circuito Master PR/SC",
+      "local": "Florianópolis, SC",
+      "data": "PENDENTE"
+    },
+    {
+      "temporada": "2027",
+      "evento": "5ª Etapa Circuito Master PR/SC",
+      "local": "Foz do Iguaçu, PR",
+      "data": "PENDENTE"
+    }
+  ],
+  "contato": {
+    "whatsapp": "(46) 98414-5665",
+    "email": "fetheo.26@gmail.com",
+    "instagram": "https://www.instagram.com/fetheodoroguimaraes/"
+  },
+  "fotos": {
+    "principal": {
+      "arquivo": "IMG_8157.JPG",
+      "alt": "Theodoro Guimaraes nadando peito em competição, de touca branca e óculos espelhados, saindo da água em direção à câmera"
+    },
+    "faixa": {
+      "arquivo": "IMG_8155.JPG",
+      "alt": "Theodoro Guimaraes na braçada de peito, entre as raias de uma piscina descoberta"
+    },
+    "destaqueResultados": {
+      "arquivo": "ZZAH10018510311.jpg",
+      "alt": "Theodoro Guimaraes de touca colorida no meio da braçada de peito, com a água azul ao redor"
+    }
+  },
+  "textos": {
+    "meta": {
+      "titulo": "Media kit de Theodoro Guimaraes",
+      "descricao": "Media kit 2026 de Theodoro Guimaraes, nadador master da Acquamaster Foz em Foz do Iguaçu, PR."
+    },
+    "pularConteudo": "Pular para o conteúdo",
+    "nav": {
+      "rotulo": "Seções",
+      "itens": [
+        {
+          "rotulo": "Números",
+          "ancora": "numeros"
+        },
+        {
+          "rotulo": "Resultados",
+          "ancora": "resultados"
+        },
+        {
+          "rotulo": "Na mídia",
+          "ancora": "midia"
+        },
+        {
+          "rotulo": "Conteúdo",
+          "ancora": "conteudo"
+        },
+        {
+          "rotulo": "Parceria",
+          "ancora": "parceria"
+        },
+        {
+          "rotulo": "Contato",
+          "ancora": "contato"
+        }
+      ]
+    },
+    "topo": {
+      "selo": "Media kit 2026",
+      "ctaParceria": "Falar sobre parceria"
+    },
+    "numeros": {
+      "titulo": "Números",
+      "atualizadoEm": "Métricas atualizadas em",
+      "seguidoresInstagram": "seguidores no Instagram",
+      "contaVerificada": "conta verificada",
+      "alcance": "contas alcançadas nos últimos 30 dias",
+      "visualizacoes": "visualizações nos últimos 30 dias",
+      "engajamento": "de engajamento (interações ÷ visualizações, 30 dias)",
+      "publico": "Público do Instagram",
+      "youtube": "YouTube",
+      "inscritos": "inscritos",
+      "tiktok": "TikTok",
+      "seguidores": "seguidores",
+      "curtidas": "curtidas"
+    },
+    "sobre": {
+      "titulo": "Sobre",
+      "equipe": "Equipe",
+      "categoria": "Categoria",
+      "provas": "Provas",
+      "rotina": "Rotina",
+      "cidade": "Cidade"
+    },
+    "faixaFoto": {
+      "frase": "Terminar a primeira prova foi a maior vitória. Agora o objetivo é o índice."
+    },
+    "resultados": {
+      "titulo": "Resultados",
+      "destaque": "Destaque da temporada",
+      "lugar": "lugar",
+      "medalha": "medalha",
+      "trofeu": "troféu"
+    },
+    "midia": {
+      "titulo": "Na mídia",
+      "por": "por",
+      "destaque": "Destaque",
+      "intro": "Matérias, entrevistas e publicações sobre a minha trajetória na imprensa e nas redes de Foz do Iguaçu e região.",
+      "tipos": {
+        "materia": {
+          "titulo": "Matérias e reportagens",
+          "acao": "Ler matéria"
+        },
+        "radio": {
+          "titulo": "Rádio",
+          "acao": "Ouvir entrevista"
+        },
+        "tv": {
+          "titulo": "TV e vídeo",
+          "acao": "Assistir"
+        },
+        "rede": {
+          "titulo": "Perfis e páginas nas redes",
+          "acao": "Ver publicação"
+        }
+      }
+    },
+    "conteudo": {
+      "titulo": "Conteúdo",
+      "intro": "Quatro formatos que se revezam no perfil, entre feed, Stories e Reels."
+    },
+    "parceiros": {
+      "titulo": "Parceiro atual",
+      "cupom": "Cupom",
+      "apoio": "Apoio à equipe"
+    },
+    "parceria": {
+      "titulo": "Como trabalhar comigo",
+      "intro": "Três formatos de parceria, do mais simples ao mais completo. Todos terminam com relatório de desempenho."
+    },
+    "objetivo": {
+      "titulo": "Próximos 12 meses",
+      "calendario": "Calendário",
+      "temporada": "Temporada",
+      "dataADefinir": "Data a definir",
+      "emCasa": "Em casa"
+    },
+    "contato": {
+      "titulo": "Vamos colocar sua marca na piscina",
+      "intro": "Me chame para conversar e eu monto uma proposta pensada para o seu negócio.",
+      "whatsapp": "WhatsApp",
+      "instagram": "Instagram",
+      "tiktok": "TikTok",
+      "rodape": "Media kit 2026"
+    }
+  }
+}

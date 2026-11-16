@@ -1,0 +1,76 @@
+---
+import { mk, ok, t } from '../lib/dados';
+import { foto } from '../lib/fotos';
+import Foto from './Foto.astro';
+import Botao from './Botao.astro';
+import Raia from './Raia.astro';
+
+const { atleta, metricas, destaques } = mk;
+const imagem = foto(mk.fotos.principal.arquivo);
+const numeros = destaques.filter((d) => ok(d.valor) && ok(d.rotulo)).slice(0, 3);
+const [primeiroNome, ...resto] = atleta.nome.split(' ');
+---
+<header class="bg-navy text-white">
+  <div class="mx-auto flex max-w-[1120px] flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 py-4 sm:px-8 sm:py-5">
+    <p class="m-0 font-condensed text-[22px] font-extrabold tracking-[0.06em] uppercase sm:text-[24px]">
+      {atleta.nome}
+    </p>
+    <nav aria-label={t.nav.rotulo} class="-mx-4 w-[calc(100%+2rem)] overflow-x-auto px-4 sm:mx-0 sm:w-auto sm:px-0">
+      <ul class="m-0 flex list-none gap-x-5 p-0 text-[16px] font-medium whitespace-nowrap sm:flex-wrap sm:gap-x-7">
+        {t.nav.itens.map((item) => (
+          <li>
+            <a href={`#${item.ancora}`} class="inline-block py-3 text-white no-underline hover:text-aqua">
+              {item.rotulo}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+
+  <div class="flex flex-col lg:flex-row lg:items-stretch">
+    <div class="flex min-w-0 flex-col justify-center gap-6 px-4 pt-8 pb-12 sm:px-8 sm:pt-12 lg:flex-[1_1_520px] lg:pt-16 lg:pr-14 lg:pb-14 lg:pl-20">
+      <p class="m-0 font-condensed text-[17px] font-bold tracking-[0.16em] text-aqua uppercase sm:text-[18px]">
+        {t.topo.selo} · {atleta.titulo}
+      </p>
+      <h1 class="m-0 font-condensed text-[76px] leading-[0.88] font-extrabold uppercase sm:text-[104px] lg:text-[96px] xl:text-[120px]">
+        {primeiroNome}<br />{resto.join(' ')}
+      </h1>
+      {ok(atleta.posicionamento) && (
+        <p class="m-0 max-w-[520px] text-[19px] leading-[1.45] text-claro sm:text-[21px]">{atleta.posicionamento}</p>
+      )}
+      <div class="mt-2 flex flex-wrap gap-4">
+        <Botao href="#contato">{t.topo.ctaParceria}</Botao>
+        {ok(metricas.instagram.url) && (
+          <Botao href={metricas.instagram.url} variante="contorno" externo>
+            {metricas.instagram.usuario}
+          </Botao>
+        )}
+      </div>
+      {numeros.length > 0 && (
+        <ul class="m-0 mt-6 grid list-none grid-cols-2 gap-x-6 gap-y-5 border-t border-borda-escura p-0 pt-7 sm:flex sm:flex-wrap sm:gap-x-10">
+          {numeros.map((n) => (
+            <li class="flex items-baseline gap-2.5 sm:gap-3">
+              <span class="font-condensed text-[44px] leading-none font-extrabold sm:text-[52px]">{n.valor}</span>
+              <span class="max-w-[160px] text-[15px] leading-[1.25] text-claro sm:text-[17px]">{n.rotulo}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+
+    {imagem && (
+      <div class="relative min-h-[520px] bg-deep sm:min-h-[680px] lg:min-h-[760px] lg:flex-[1_1_480px]">
+        <Foto
+          src={imagem}
+          alt={mk.fotos.principal.alt}
+          widths={[480, 800, 1200, 1600]}
+          sizes="(min-width: 1024px) 48vw, 100vw"
+          prioridade
+          class="absolute inset-0 h-full w-full object-cover object-[50%_40%]"
+        />
+      </div>
+    )}
+  </div>
+  <Raia />
+</header>

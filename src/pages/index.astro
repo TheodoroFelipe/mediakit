@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import ComoTrabalhar from '../components/ComoTrabalhar.astro';
+import Conteudo from '../components/Conteudo.astro';
+import FaixaFoto from '../components/FaixaFoto.astro';
+import NaMidia from '../components/NaMidia.astro';
+import Numeros from '../components/Numeros.astro';
+import Objetivo from '../components/Objetivo.astro';
+import Parceiros from '../components/Parceiros.astro';
+import Resultados from '../components/Resultados.astro';
+import Rodape from '../components/Rodape.astro';
+import Sobre from '../components/Sobre.astro';
+import Topo from '../components/Topo.astro';
+---
+<Base>
+  <Topo />
+  <main id="conteudo-principal" tabindex="-1">
+    <Numeros />
+    <Sobre />
+    <FaixaFoto />
+    <Resultados />
+    <NaMidia />
+    <Conteudo />
+    <Parceiros />
+    <ComoTrabalhar />
+    <Objetivo />
+  </main>
+  <Rodape />
+</Base>

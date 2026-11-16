@@ -1,0 +1,80 @@
+---
+import { ano, dataLonga, mk, ok, t } from '../lib/dados';
+import { foto } from '../lib/fotos';
+import Foto from './Foto.astro';
+import Container from './Container.astro';
+import Sobretitulo from './Sobretitulo.astro';
+import Titulo from './Titulo.astro';
+
+type Prova = { prova: string; colocacao: string; medalha?: boolean; trofeu?: boolean };
+type Resultado = { evento: string; local: string; data: string; destaque?: boolean; nota?: string; provas: Prova[] };
+
+const resultados = mk.resultados as Resultado[];
+const destaque = resultados.find((r) => r.destaque);
+const outros = resultados.filter((r) => r !== destaque);
+const imagem = foto(mk.fotos.destaqueResultados.arquivo);
+
+const premio = (p: Prova) => (p.trofeu ? t.resultados.trofeu : p.medalha ? t.resultados.medalha : '');
+const meta = (r: Resultado) => [r.local, r.data].filter((v) => ok(v)).map((v, i) => (i === 1 ? dataLonga(v) : v)).join(' · ');
+---
+<section id="resultados" aria-labelledby="resultados-titulo" class="bg-navy text-white">
+  <Container class="flex flex-col gap-10 py-16 sm:py-20">
+    <Titulo id="resultados-titulo" claro>{t.resultados.titulo}</Titulo>
+
+    {destaque && (
+      <article class="flex flex-wrap items-stretch gap-6">
+        {imagem && (
+          <div class="relative min-h-[300px] grow basis-[380px] overflow-hidden rounded-lg bg-deep sm:min-h-[520px]">
+            <Foto
+              src={imagem}
+              alt={mk.fotos.destaqueResultados.alt}
+                  widths={[480, 800, 1200]}
+              sizes="(min-width: 1024px) 440px, 100vw"
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+          </div>
+        )}
+        <div class="flex min-w-0 grow basis-[560px] flex-col justify-center gap-7 rounded-lg bg-deep p-6 sm:p-9">
+          <div class="flex flex-col gap-2">
+            <Sobretitulo claro>
+              {[t.resultados.destaque, ok(destaque.local) ? destaque.local : '', ok(destaque.data) ? ano(destaque.data) : '']
+                .filter(Boolean)
+                .join(' · ')}
+            </Sobretitulo>
+            <h3 class="m-0 font-condensed text-[32px] leading-[1.05] font-extrabold uppercase sm:text-[40px]">{destaque.evento}</h3>
+            {ok(destaque.nota) && <p class="m-0 text-claro">{destaque.nota}.</p>}
+          </div>
+          <ul class="m-0 grid list-none grid-cols-1 gap-4 p-0 sm:grid-cols-2">
+            {destaque.provas.map((p) => (
+              <li class="flex flex-col gap-1 rounded-md border border-borda-escura p-5">
+                <span class="font-condensed text-[44px] leading-none font-extrabold">{p.colocacao}</span>
+                <span class="text-claro">{[p.prova, premio(p)].filter(Boolean).join(' · ')}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </article>
+    )}
+
+    {outros.length > 0 && (
+      <ul class="m-0 flex list-none flex-col border-t border-borda-escura p-0">
+        {outros.map((r) => (
+          <li class="flex flex-wrap gap-x-8 gap-y-2 border-b border-borda-escura py-6">
+            <div class="min-w-0 grow basis-[360px]">
+              <h3 class="m-0 text-[20px] font-semibold">{r.evento}</h3>
+              <p class="m-0 text-claro-2">{meta(r)}</p>
+            </div>
+            <ul class="m-0 flex min-w-0 grow basis-[320px] list-none flex-col gap-1 p-0 text-claro">
+              {r.provas.map((p) => (
+                <li>
+                  <strong class="font-semibold text-white">{p.colocacao} {t.resultados.lugar}</strong> · {p.prova}
+                  {p.trofeu && <> · {t.resultados.trofeu}</>}
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
+    )}
+  </Container>
+</section>

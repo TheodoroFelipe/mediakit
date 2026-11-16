@@ -1,0 +1,43 @@
+---
+import { estilos, mk, ok, t } from '../lib/dados';
+import Container from './Container.astro';
+import Titulo from './Titulo.astro';
+
+const { atleta } = mk;
+const bio: string[] = ok(atleta.bio) ? (Array.isArray(atleta.bio) ? atleta.bio : [atleta.bio]) : [];
+
+const ficha = [
+  { rotulo: t.sobre.equipe, valor: atleta.equipe },
+  { rotulo: t.sobre.categoria, valor: atleta.categoria },
+  { rotulo: t.sobre.provas, valor: ok(atleta.provas) ? estilos(atleta.provas) : '' },
+  { rotulo: t.sobre.rotina, valor: atleta.rotina },
+  { rotulo: t.sobre.cidade, valor: atleta.cidade },
+].filter((linha) => ok(linha.valor));
+---
+<section id="sobre" aria-labelledby="sobre-titulo" class="bg-white">
+  <Container class="flex flex-col gap-10 py-16 sm:py-20 lg:flex-row lg:items-start lg:gap-14">
+    <div class="flex min-w-0 flex-col gap-5 lg:flex-[1_1_460px]">
+      <Titulo id="sobre-titulo">{t.sobre.titulo}</Titulo>
+      {bio.length > 0 ? (
+        bio.map((paragrafo) => <p class="m-0 text-[19px]">{paragrafo}</p>)
+      ) : (
+        <ul class="m-0 flex list-none flex-col gap-3 p-0 text-[19px]">
+          {atleta.fatos.filter((f) => ok(f)).map((fato) => (
+            <li class="flex gap-3">
+              <span aria-hidden="true" class="mt-[0.7em] h-[3px] w-4 shrink-0 bg-pool"></span>
+              <span>{fato}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+    <dl class="m-0 flex min-w-0 flex-col border-t border-line lg:flex-[1_1_320px]">
+      {ficha.map((linha) => (
+        <div class="flex justify-between gap-6 border-b border-line py-4">
+          <dt class="text-muted">{linha.rotulo}</dt>
+          <dd class="m-0 text-right font-semibold">{linha.valor}</dd>
+        </div>
+      ))}
+    </dl>
+  </Container>
+</section>

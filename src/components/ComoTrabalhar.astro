@@ -1,0 +1,53 @@
+---
+// Recebe os dados por props para que /para/[marca] possa trocar pela proposta específica.
+import { mk, ok, t } from '../lib/dados';
+import Container from './Container.astro';
+import Titulo from './Titulo.astro';
+
+type Formato = { nome: string; descricao: string };
+interface Props {
+  titulo?: string;
+  intro?: string;
+  formatos?: Formato[];
+  entregas?: string[];
+}
+
+const {
+  titulo = t.parceria.titulo,
+  intro = t.parceria.intro,
+  formatos = mk.parceria.formatos,
+  entregas = mk.parceria.entregas,
+} = Astro.props;
+
+const lista = formatos.filter((f) => ok(f.nome));
+const listaEntregas = entregas.filter((e) => ok(e));
+const pontuar = (texto: string) => (/[.!?]$/.test(texto) ? texto : `${texto}.`);
+---
+<section id="parceria" aria-labelledby="parceria-titulo" class="bg-paper">
+  <Container class="flex flex-col gap-10 py-16 sm:py-20">
+    <div class="flex max-w-[680px] flex-col gap-3">
+      <Titulo id="parceria-titulo">{titulo}</Titulo>
+      {ok(intro) && <p class="m-0 text-[19px] text-muted">{intro}</p>}
+    </div>
+    {lista.length > 0 && (
+      <ol class="m-0 grid list-none grid-cols-1 gap-5 p-0 md:grid-cols-3">
+        {lista.map((f, i) => (
+          <li class="flex flex-col gap-3 rounded-lg border border-line bg-white p-7 sm:p-8">
+            <span aria-hidden="true" class="font-condensed text-[56px] leading-none font-extrabold text-link">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <h3 class="m-0 text-[22px] font-semibold">{f.nome}</h3>
+            {ok(f.descricao) && <p class="m-0 text-muted">{pontuar(f.descricao)}</p>}
+          </li>
+        ))}
+      </ol>
+    )}
+    {listaEntregas.length > 0 && (
+      <ul class="m-0 flex list-none flex-wrap gap-3 p-0">
+        {listaEntregas.map((e) => (
+          <li class="rounded-full border border-chip bg-white px-[18px] py-2 font-medium">{e}</li>
+        ))}
+      </ul>
+    )}
+  </Container>
+</section>

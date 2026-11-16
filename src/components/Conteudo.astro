@@ -1,0 +1,51 @@
+---
+import { mk, ok, t } from '../lib/dados';
+import { foto } from '../lib/fotos';
+import Foto from './Foto.astro';
+import Container from './Container.astro';
+import Raia from './Raia.astro';
+import Titulo from './Titulo.astro';
+
+type Formato = { nome: string; descricao: string; foto?: { arquivo: string; alt: string } };
+const formatos = (mk.conteudo.formatos as Formato[]).filter((f) => ok(f.nome));
+const pontuar = (texto: string) => (/[.!?]$/.test(texto) ? texto : `${texto}.`);
+---
+{formatos.length > 0 && (
+  <section id="conteudo" aria-labelledby="conteudo-titulo" class="bg-paper">
+    <Container class="flex flex-col gap-10 py-16 sm:py-20">
+      <div class="flex max-w-[680px] flex-col gap-3">
+        <Titulo id="conteudo-titulo">{t.conteudo.titulo}</Titulo>
+        {ok(t.conteudo.intro) && <p class="m-0 text-[19px] text-muted">{t.conteudo.intro}</p>}
+      </div>
+      <ul class="m-0 grid list-none grid-cols-1 gap-5 p-0 sm:grid-cols-2 lg:grid-cols-4">
+        {formatos.map((f, i) => {
+          const imagem = foto(f.foto?.arquivo);
+          return (
+            <li class="flex flex-col gap-3.5">
+              {imagem && f.foto ? (
+                <Foto
+                  src={imagem}
+                  alt={f.foto.alt}
+                          widths={[320, 560, 800]}
+                  sizes="(min-width: 1024px) 260px, (min-width: 640px) 50vw, 100vw"
+                  class="aspect-[4/5] w-full rounded-lg object-cover object-top"
+                />
+              ) : (
+                <div aria-hidden="true" class="relative flex aspect-[4/5] flex-col justify-between overflow-hidden rounded-lg bg-navy">
+                  <span class="p-6 font-condensed text-[96px] leading-none font-extrabold text-deep">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <Raia />
+                </div>
+              )}
+              <div>
+                <h3 class="m-0 text-[20px] font-semibold">{f.nome}</h3>
+                {ok(f.descricao) && <p class="m-0 text-muted">{pontuar(f.descricao)}</p>}
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </Container>
+  </section>
+)}

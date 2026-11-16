@@ -1,0 +1,126 @@
+---
+import { mk, numero, ok, t, dataLonga } from '../lib/dados';
+import Container from './Container.astro';
+import Titulo from './Titulo.astro';
+
+const { metricas, destaques } = mk;
+const ig = metricas.instagram;
+
+// Métricas de redes só aparecem se houver data de atualização.
+const comData = ok(metricas.atualizadoEm);
+
+type Item = { valor: string; rotulo: string };
+type Bloco = { titulo: string; usuario?: string; url?: string; nota?: string; itens: Item[] };
+
+// Cartões grandes: Instagram, a rede principal.
+const redes: Item[] = [];
+const rede = (valor: string | number, rotulo: string) => redes.push({ valor: numero(valor), rotulo });
+
+if (comData) {
+  if (ok(ig.seguidores))
+    rede(ig.seguidores, ig.verificado ? `${t.numeros.seguidoresInstagram}, ${t.numeros.contaVerificada}` : t.numeros.seguidoresInstagram);
+  if (ok(ig.contasAlcancadas30d)) rede(ig.contasAlcancadas30d, t.numeros.alcance);
+  if (ok(ig.visualizacoes30d)) rede(ig.visualizacoes30d, t.numeros.visualizacoes);
+  if (ok(ig.taxaEngajamento)) rede(ig.taxaEngajamento, t.numeros.engajamento);
+}
+
+// Blocos menores: público do Instagram e as outras redes, cada uma separada.
+const itens = (lista: [string | number, string][]) =>
+  lista.filter(([v]) => ok(v)).map(([v, rotulo]) => ({ valor: numero(v), rotulo }));
+
+const blocos: Bloco[] = [];
+if (comData) {
+  const publico = ig.publico.filter((p) => ok(p.valor) && ok(p.rotulo));
+  if (publico.length) blocos.push({ titulo: t.numeros.publico, itens: publico });
+
+  const { tiktok, youtube } = metricas;
+  const itensTiktok = itens([
+    [tiktok.seguidores, t.numeros.seguidores],
+    [tiktok.curtidas, t.numeros.curtidas],
+  ]);
+  if (itensTiktok.length)
+    blocos.push({ titulo: t.numeros.tiktok, usuario: tiktok.usuario, url: tiktok.url, nota: tiktok.nota, itens: itensTiktok });
+
+  const itensYoutube = itens([[youtube.inscritos, t.numeros.inscritos]]);
+  if (itensYoutube.length)
+    blocos.push({ titulo: t.numeros.youtube, usuario: youtube.usuario, url: youtube.url, nota: youtube.nota, itens: itensYoutube });
+}
+
+const esportivos: Item[] = destaques
+  .filter((d) => ok(d.valor) && ok(d.rotulo))
+  .map((d) => ({ valor: d.valor, rotulo: d.rotulo }));
+
+// Grade de 12 colunas no desktop.
+const span: Record<number, string> = {
+  1: 'lg:col-span-12',
+  2: 'lg:col-span-6',
+  3: 'lg:col-span-4',
+  4: 'lg:col-span-3',
+};
+const larguraRede = span[redes.length] ?? 'lg:col-span-4';
+const larguraEsporte = span[esportivos.length] ?? 'lg:col-span-4';
+// Dois blocos: o primeiro (público, com 3 itens) fica um pouco mais largo.
+const larguraBloco = (i: number) =>
+  blocos.length === 2 ? (i === 0 ? 'lg:col-span-7' : 'lg:col-span-5') : (span[blocos.length] ?? 'lg:col-span-4');
+
+const temAlgo = redes.length + blocos.length + esportivos.length > 0;
+const cartao = 'flex flex-col gap-2 rounded-lg border border-line bg-white p-7';
+const valor = 'font-condensed text-[56px] leading-none font-extrabold text-navy sm:text-[64px]';
+---
+{temAlgo && (
+  <section id="numeros" aria-labelledby="numeros-titulo" class="bg-paper">
+    <Container class="flex flex-col gap-8 py-14 sm:py-[72px]">
+      <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+        <Titulo id="numeros-titulo">{t.numeros.titulo}</Titulo>
+        {(redes.length > 0 || blocos.length > 0) && (
+          <p class="m-0 text-[16px] text-muted">
+            {t.numeros.atualizadoEm} {dataLonga(metricas.atualizadoEm)}
+          </p>
+        )}
+      </div>
+
+      <ul class="m-0 grid list-none grid-cols-1 gap-5 p-0 sm:grid-cols-2 lg:grid-cols-12">
+        {redes.map((c) => (
+          <li class:list={[cartao, larguraRede]}>
+            <span class={valor}>{c.valor}</span>
+            <span class="text-muted">{c.rotulo}</span>
+          </li>
+        ))}
+
+        {blocos.map((b, i) => (
+          <li class:list={['flex flex-col gap-5 rounded-lg border border-line bg-white p-7 sm:col-span-2', larguraBloco(i)]}>
+            <div class="flex flex-col gap-1">
+              <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <h3 class="m-0 font-condensed text-[18px] font-bold tracking-[0.14em] text-link uppercase">{b.titulo}</h3>
+                {ok(b.usuario) &&
+                  (ok(b.url) ? (
+                    <a href={b.url} target="_blank" rel="noopener noreferrer" class="font-semibold text-link hover:text-navy">
+                      {b.usuario}
+                    </a>
+                  ) : (
+                    <span class="font-semibold">{b.usuario}</span>
+                  ))}
+              </div>
+              {ok(b.nota) && <p class="m-0 text-muted">{b.nota}</p>}
+            </div>
+            <ul class="m-0 flex list-none flex-wrap gap-x-10 gap-y-4 p-0">
+              {b.itens.map((item) => (
+                <li class="flex flex-col gap-1">
+                  <span class="font-condensed text-[44px] leading-none font-extrabold text-navy">{item.valor}</span>
+                  <span class="text-muted">{item.rotulo}</span>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+
+        {esportivos.map((c) => (
+          <li class:list={[cartao, larguraEsporte]}>
+            <span class={valor}>{c.valor}</span>
+            <span class="text-muted">{c.rotulo}</span>
+          </li>
+        ))}
+      </ul>
+    </Container>
+  </section>
+)}

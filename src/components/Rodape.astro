@@ -1,0 +1,43 @@
+---
+import { mk, ok, t } from '../lib/dados';
+import Botao from './Botao.astro';
+import Raia from './Raia.astro';
+
+const { contato, atleta } = mk;
+// wa.me exige o código do país: números brasileiros com DDD (10 ou 11 dígitos) ganham o 55.
+function linkWhatsapp(numero: string) {
+  const digitos = numero.replace(/\D/g, '');
+  const completo = digitos.length <= 11 ? `55${digitos}` : digitos;
+  return `https://wa.me/${completo}`;
+}
+const whatsapp = ok(contato.whatsapp) ? linkWhatsapp(contato.whatsapp) : null;
+---
+<footer id="contato" class="bg-navy text-white">
+  <Raia />
+  <div class="mx-auto flex max-w-[1120px] flex-col gap-8 px-4 pt-16 pb-12 sm:px-8 sm:pt-[88px]">
+    <h2 class="m-0 max-w-[760px] font-condensed text-[52px] leading-[0.95] font-extrabold uppercase sm:text-[80px]">
+      {t.contato.titulo}
+    </h2>
+    {ok(t.contato.intro) && <p class="m-0 max-w-[560px] text-[19px] text-claro sm:text-[21px]">{t.contato.intro}</p>}
+    <div class="flex flex-wrap gap-4">
+      {whatsapp && <Botao href={whatsapp} externo>{`${t.contato.whatsapp} ${contato.whatsapp}`}</Botao>}
+      {ok(contato.email) && (
+        <Botao href={`mailto:${contato.email}`} variante={whatsapp ? 'contorno' : 'primario'}>{contato.email}</Botao>
+      )}
+      {ok(contato.instagram) && (
+        <Botao href={contato.instagram} variante={whatsapp || ok(contato.email) ? 'contorno' : 'primario'} externo>
+          {t.contato.instagram}
+        </Botao>
+      )}
+      {ok(mk.metricas.tiktok.url) && (
+        <Botao href={mk.metricas.tiktok.url} variante="contorno" externo>
+          {t.contato.tiktok}
+        </Botao>
+      )}
+    </div>
+    <div class="mt-10 flex flex-wrap justify-between gap-x-6 gap-y-2 border-t border-borda-escura pt-6 text-[15px] text-claro-2">
+      <span>{atleta.nome} · {t.contato.rodape}</span>
+      <span>{atleta.equipe} · {atleta.cidade}</span>
+    </div>
+  </div>
+</footer>

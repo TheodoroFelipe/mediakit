@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #08213F;
+  --color-deep: #0B2E57;
+  --color-pool: #1283C9;
+  --color-aqua: #3FC1E8;
+  --color-lane-red: #E23B3B;
+  --color-ink: #10223A;
+  --color-muted: #5B6B80;
+  --color-line: #DCE6F0;
+  --color-paper: #F4F8FB;
+  --color-link: #0B5E96;
+  --color-borda-escura: #3C5C82;
+  --color-claro: #D5E2F0;
+  --color-claro-2: #B9CBE0;
+  --color-chip: #8FA3BA;
+
+  --font-sans: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-condensed: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+  body {
+    background: #fff;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.55;
+  }
+  a {
+    color: var(--color-link);
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-aqua);
+    outline-offset: 3px;
+  }
+  [id] {
+    scroll-margin-top: 16px;
+  }
+}
+
+@utility raia {
+  height: 12px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-pool) 0 56px,
+    #fff 56px 72px,
+    var(--color-lane-red) 72px 128px,
+    #fff 128px 144px
+  );
+}
