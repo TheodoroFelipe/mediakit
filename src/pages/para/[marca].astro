@@ -1,0 +1,55 @@
+---
+// Versões por marca: cada arquivo em src/data/propostas/*.json vira /para/<nome-do-arquivo>.
+// Troca a saudação do topo e o bloco "Como trabalhar comigo". Páginas fora do Google (noindex).
+import Base from '../../layouts/Base.astro';
+import ComoTrabalhar from '../../components/ComoTrabalhar.astro';
+import Conteudo from '../../components/Conteudo.astro';
+import FaixaFoto from '../../components/FaixaFoto.astro';
+import NaMidia from '../../components/NaMidia.astro';
+import Numeros from '../../components/Numeros.astro';
+import Objetivo from '../../components/Objetivo.astro';
+import Parceiros from '../../components/Parceiros.astro';
+import Resultados from '../../components/Resultados.astro';
+import Rodape from '../../components/Rodape.astro';
+import Sobre from '../../components/Sobre.astro';
+import Topo from '../../components/Topo.astro';
+
+type Proposta = {
+  marca: string;
+  saudacao: string;
+  metaTitulo?: string;
+  parceria: {
+    titulo?: string;
+    intro?: string;
+    formatos?: { nome: string; descricao: string }[];
+    entregas?: string[];
+    consulta?: string;
+  };
+};
+
+export function getStaticPaths() {
+  const arquivos = import.meta.glob<{ default: Proposta }>('../../data/propostas/*.json', { eager: true });
+  return Object.entries(arquivos).map(([caminho, modulo]) => ({
+    params: { marca: caminho.split('/').pop()!.replace(/\.json$/, '') },
+    props: { proposta: modulo.default },
+  }));
+}
+
+const { proposta } = Astro.props as { proposta: Proposta };
+const p = proposta.parceria;
+---
+<Base titulo={proposta.metaTitulo ?? proposta.saudacao} noindex>
+  <Topo saudacao={proposta.saudacao} />
+  <main id="conteudo-principal" tabindex="-1">
+    <ComoTrabalhar titulo={p.titulo} intro={p.intro} formatos={p.formatos} entregas={p.entregas} consulta={p.consulta} />
+    <Numeros />
+    <Sobre />
+    <FaixaFoto />
+    <Resultados />
+    <NaMidia />
+    <Conteudo />
+    <Parceiros />
+    <Objetivo />
+  </main>
+  <Rodape />
+</Base>

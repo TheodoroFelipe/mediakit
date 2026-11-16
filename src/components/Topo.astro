@@ -5,6 +5,12 @@ import Foto from './Foto.astro';
 import Botao from './Botao.astro';
 import Raia from './Raia.astro';
 
+interface Props {
+  /** Saudação das páginas /para/[marca], ex.: "Proposta para a Gera Energia". */
+  saudacao?: string;
+}
+const { saudacao } = Astro.props;
+
 const { atleta, metricas, destaques } = mk;
 const imagem = foto(mk.fotos.principal.arquivo);
 const numeros = destaques.filter((d) => ok(d.valor) && ok(d.rotulo)).slice(0, 3);
@@ -30,6 +36,11 @@ const [primeiroNome, ...resto] = atleta.nome.split(' ');
 
   <div class="flex flex-col lg:flex-row lg:items-stretch">
     <div class="flex min-w-0 flex-col justify-center gap-6 px-4 pt-8 pb-12 sm:px-8 sm:pt-12 lg:flex-[1_1_520px] lg:pt-16 lg:pr-14 lg:pb-14 lg:pl-20">
+      {ok(saudacao) && (
+        <p class="m-0 self-start rounded-full bg-aqua px-4 py-1.5 text-[15px] font-semibold text-navy sm:text-[16px]">
+          {saudacao}
+        </p>
+      )}
       <p class="m-0 font-condensed text-[17px] font-bold tracking-[0.16em] text-aqua uppercase sm:text-[18px]">
         {t.topo.selo} · {atleta.titulo}
       </p>
